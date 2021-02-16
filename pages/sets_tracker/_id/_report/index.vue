@@ -317,6 +317,7 @@ export default {
                         title: "удаление отчета",
                         variant: "success",
                     });
+                    this.upload();
                 })
                 .catch((err) => {
                     this.$bvToast.toast("ошибка", {
@@ -350,6 +351,7 @@ export default {
         editTaskOpen() {
             this.$refs["edit-report"].show();
         },
+
         editReport() {
             this.$axios
                 .$put(
@@ -367,6 +369,7 @@ export default {
                         title: "Изменение задачи",
                         variant: "success",
                     });
+                    this.upload();
                 })
                 .catch((err) => {
                     this.$bvToast.toast("ошибка", {
@@ -397,6 +400,7 @@ export default {
                         title: "Добавление отчета",
                         variant: "success",
                     });
+                    this.upload();
                 })
                 .catch((err) => {
                     this.$bvToast.toast("ошибка", {
@@ -406,6 +410,18 @@ export default {
                     });
                 });
         },
+        async upload() {
+            this.weekReports = await this.$axios.$get(
+                `https://monzun.herokuapp.com/api/stats/${this.$route.params.idSet}/${this.$route.params.report}`,
+                {
+                    headers: {
+                        Authorization:
+                            "Bearer " + this.$cookies.get("tokenUser"),
+                    },
+                }
+            );
+        },
+
         onSomeFilesChange(e) {
             const file = e.target.files;
             if (e.target.files.size > 5000000) {

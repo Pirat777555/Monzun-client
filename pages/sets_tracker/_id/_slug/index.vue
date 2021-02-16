@@ -324,7 +324,13 @@
                     <div class="description">
                         <div class="description-title">Описание задачи</div>
                         <div class="description-text">
-                            <input type="text" v-model="newTask.description" />
+                            <textarea
+                                name="description"
+                                id=""
+                                cols="80"
+                                rows="5"
+                                v-model="newTask.description"
+                            ></textarea>
                         </div>
                     </div>
                     <div class="other">

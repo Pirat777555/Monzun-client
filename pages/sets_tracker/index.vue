@@ -2,6 +2,9 @@
     <div class="sets">
         <div class="container">
             <Client></Client>
+            <div class="row" v-if="sets.length == 0">
+                <div class="col-12">У вас нет наборов :(</div>
+            </div>
             <div class="row">
                 <Set
                     v-for="(set, index) in sets"
