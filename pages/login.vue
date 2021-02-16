@@ -97,9 +97,9 @@ export default {
                     password: this.password,
                 })
                 .then((response) => {
-                    console.log(response);
                     if (response && response.token) {
                         this.$cookies.set("tokenUser", response.token);
+                        
                         this.$bvToast.toast("Авторизация прошла успешно!", {
                             title: "Авторизация",
                             variant: "success",
@@ -128,6 +128,7 @@ export default {
                 )
                 .then((response) => {
                     this.$cookies.set("tokenUser", response.token);
+                    
                     this.$bvToast.toast("Регистрация прошла успешно!", {
                         title: "Регистрация",
                         variant: "success",

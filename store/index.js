@@ -3,7 +3,7 @@ export const state = () => ({
 });
 
 export const actions = {
-    async nuxtServerInit({commit, dispatch}) {
+    async nuxtServerInit({_, dispatch}) {
         await dispatch('getUser');
     },
     async getUser({commit}) {
