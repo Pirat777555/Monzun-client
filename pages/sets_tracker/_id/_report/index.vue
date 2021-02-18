@@ -193,7 +193,6 @@
                                 v-model="activeReport.comment"
                             ></textarea>
                         </div>
-                        >
                         <div>
                             <div class="mark mb-5">
                                 Оценка:
@@ -205,6 +204,7 @@
                                     <option value="5">5</option>
                                 </select>
                             </div>
+
                             <div
                                 class="file"
                                 v-for="(
@@ -220,6 +220,14 @@
                                 /></a>
                                 {{ file.originalFilename }}
                             </div>
+                            <input
+                                type="file"
+                                multiple
+                                required
+                                id="files"
+                                ref="files"
+                                @change="onSomeFilesChange"
+                            />
                         </div>
                         <div
                             class="close"
@@ -421,7 +429,6 @@ export default {
                 }
             );
         },
-
         onSomeFilesChange(e) {
             const file = e.target.files;
             if (e.target.files.size > 5000000) {
@@ -456,6 +463,7 @@ export default {
                         this.fileIds.push(this.listFiles[i].id);
                     }
                     this.newReport.fileIds = this.fileIds;
+                    this.activeReport.fileIds = this.fileIds;
                 })
                 .catch((err) => {
                     this.$bvToast.toast("ошибка", {

@@ -24,7 +24,12 @@
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-default">Вход</button>
-                    <div class="forgot-password">Забыли пароль?</div>
+                    <div
+                        class="forgot-password"
+                        @click="$router.push({ name: 'passwordReset' })"
+                    >
+                        Забыли пароль?
+                    </div>
                     <div class="forgot-password" @click="visible">
                         Регистрация
                     </div>
@@ -97,9 +102,9 @@ export default {
                     password: this.password,
                 })
                 .then((response) => {
+                    console.log(response);
                     if (response && response.token) {
                         this.$cookies.set("tokenUser", response.token);
-                        
                         this.$bvToast.toast("Авторизация прошла успешно!", {
                             title: "Авторизация",
                             variant: "success",
@@ -128,7 +133,6 @@ export default {
                 )
                 .then((response) => {
                     this.$cookies.set("tokenUser", response.token);
-                    
                     this.$bvToast.toast("Регистрация прошла успешно!", {
                         title: "Регистрация",
                         variant: "success",

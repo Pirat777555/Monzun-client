@@ -222,6 +222,7 @@ export default {
                 }
             );
         }
+        console.log(this.startup);
         // this.startup = this.startups[0];
         if (this.startup.logo) {
             this.url = this.startup.logo.url;
@@ -323,7 +324,7 @@ export default {
         onFileChange(e) {
             const file = e.target.files[0];
             this.url = URL.createObjectURL(file);
-            if (e.target.files[0].size > 10000000) {
+            if (e.target.files[0].size > 5000000) {
                 alert("File is too big!");
                 this.$refs.file.value = null;
             }
