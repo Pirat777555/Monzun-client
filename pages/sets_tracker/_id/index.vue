@@ -33,7 +33,7 @@
                     v-for="(startup, index) in startups"
                     :key="index"
                     :name="startup.name"
-                    :photo="startup.photo"
+                    :photo="startup.logo"
                     :id="startup.id"
                     @getStartup="getStartup(startup.id)"
                     @getStartupReport="getStartupReport(startup.id)"
@@ -67,6 +67,7 @@ export default {
         );
         console.log(this.activeSet);
         this.startups = this.activeSet.startups;
+        console.log(this.startups);
     },
     methods: {
         getStartup(id) {

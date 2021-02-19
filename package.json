@@ -6,9 +6,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
-    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
-    "heroku-postbuild": "npm run build"
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.5",
@@ -18,7 +16,6 @@
     "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
-    "push-dir": "^0.4.1",
     "socket.io": "^3.0.5",
     "vue-socket.io": "^3.0.10",
     "vuedraggable": "^2.24.3",

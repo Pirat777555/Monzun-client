@@ -7,7 +7,7 @@
                 <div class="form-group">
                     <input
                         type="email"
-                        v-model="email"
+                        v-model="password"
                         class="form-control"
                         id="inputEmail"
                     />
@@ -34,19 +34,33 @@ export default {
     data() {
         return {
             email: "",
+            password: "",
         };
     },
     methods: {
         reset() {
-            this.$axios.request(
-                "https://monzun.herokuapp.com/api/me/resetPassword",
-                {
-                    method: "post",
-                    params: {
-                        email: this.email,
-                    },
-                }
-            );
+            console.log(this.$route.query.token);
+            this.$axios //отправка файлов на сервер
+                .$post("https://monzun.herokuapp.com/api/me/savePassword", {
+                    newPassword: this.password,
+                    token: this.$route.query.token,
+                })
+                .then((response) => {
+                    this.$bvToast.toast("Пароль изменен!", {
+                        title: "Изменение пароля",
+                        variant: "success",
+                    });
+                    this.$router.push({
+                        name: "login",
+                    });
+                })
+                .catch((err) => {
+                    this.$bvToast.toast("ошибка", {
+                        title: "Не удалось изменить пароль",
+                        variant: "danger",
+                        solid: true,
+                    });
+                });
         },
     },
 };
